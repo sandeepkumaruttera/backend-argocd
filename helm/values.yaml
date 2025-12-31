@@ -1,4 +1,4 @@
 deployment:
-  imageVersion: IMAGE_VERSION # this is called placeholder  u can see in jenkinsfile sed image_version 's/IMAGE_VERSION/${appVersion}/g
+  imageVersion: 1.5.0-8 # this is called placeholder  u can see in jenkinsfile sed image_version 's/1.5.0-8/${appVersion}/g
 #  imageVersion: 1.5.0
   replicas: 2
