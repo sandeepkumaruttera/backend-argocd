@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend
+  namespace: expense
+data:
+  DB_HOST: mysql                  ### so here rds mysql database is connected with backend with this end point need to give here
+
+
+#for mysql server you need to give mysql that it
+
+
+#  MySQL Pod inside the same Kubernetes cluster
+
+# You give the Service name of MySQL (not Pod name).
+
+# Example:
+
+# DB_HOST: mysql
+
+
+# (here mysql is the Kubernetes Service name that points to the MySQL pod).
