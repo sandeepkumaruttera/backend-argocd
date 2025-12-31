@@ -73,30 +73,28 @@ pipeline {
     //         }
     //    }
         stage('Update Deployment File') {
-        environment {
-            GIT_REPO_NAME = "backend-argocd"
-            GIT_USER_NAME = "sandeepkumaruttera"
-        }
-            steps {
-                withCredentials([
-                    string(credentialsId: 'github', variable: 'GITHUB_TOKEN')
-                ]) {
-                    sh """
-                        git config user.email "sandeepkumaruttera@gmail.com"
+  environment {
+      GIT_REPO_NAME = "backend-argocd"
+      GIT_USER_NAME = "sandeepkumaruttera"
+  }
+  steps {
+    withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
+      sh """
+        git config user.email "sandeepkumaruttera@gmail.com"
+        git config user.name "sandeep kumar"
 
-                        git config user.name "sandeep kumar"
+        sed -i "s/IMAGE_VERSION/${appVersion}/g" helm/values.yml
 
-                        sed -i "s/IMAGE_VERSION/${appVersion}/g"  /helm/values.yml
+        git add helm/values.yml
 
-                        git add /helm/values.yml
+        git commit -m "Update image tag to ${appVersion}" || true
 
-                        git commit -m "Update image tag to ${appVersion}"
-
-                        git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:main
-                    """
-                }
-            }
-        }  
+        git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:main
+      """
+    }
+  }
+}
+  
         stage('Deploy') {
             steps {
                 sh 'echo this is deploy'
