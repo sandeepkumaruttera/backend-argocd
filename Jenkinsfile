@@ -83,12 +83,12 @@ pipeline {
                 ]) {
                     sh """
                         git config user.email "sandeepkumaruttera@gmail.com"
-                        
+
                         git config user.name "sandeep kumar"
 
-                        sed -i "s/IMAGE_VERSION/${appVersion}/g"  backend-argocd/helm/values.yml
+                        sed -i "s/IMAGE_VERSION/${appVersion}/g"  /helm/values.yml
 
-                        git add backend-argocd/helm/values.yml
+                        git add /helm/values.yml
 
                         git commit -m "Update image tag to ${appVersion}"
 
