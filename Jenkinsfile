@@ -83,9 +83,9 @@ pipeline {
         git config user.email "sandeepkumaruttera@gmail.com"
         git config user.name "sandeep kumar"
 
-        sed -i "s/IMAGE_VERSION/${appVersion}/g" helm/values.yml
+        sed -i "s/IMAGE_VERSION/${appVersion}/g" helm/values.yaml
 
-        git add helm/values.yml
+        git add helm/values.yaml
 
         git commit -m "Update image tag to ${appVersion}" || true
 
