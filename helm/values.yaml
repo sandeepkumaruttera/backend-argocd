@@ -1,4 +1,4 @@
 deployment:
-  imageVersion: 1.5.0-7
-#  imageVersion: 1.5.0-7
+  imageVersion: 1.5.0-8
+#  imageVersion: 1.5.0-8
   replicas: 2
